@@ -3,10 +3,31 @@
 
   // ─── Mobile Menu ───
   const menuBtn = document.getElementById('menuBtn');
-  const navLinks = document.getElementById('navLinks');
-  menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  const mobileMenu = document.getElementById('mobileMenu');
+  const navOverlay = document.getElementById('navOverlay');
+
+  function openMenu() {
+    menuBtn.classList.add('active');
+    mobileMenu.classList.add('open');
+    navOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    menuBtn.classList.remove('active');
+    mobileMenu.classList.remove('open');
+    navOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  navOverlay.addEventListener('click', closeMenu);
+
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
   });
 
   // ─── Active Nav State ───
@@ -159,12 +180,13 @@
       if (res.ok) {
         const data = await res.json();
         const count = data.stargazers_count;
-        const el = document.getElementById('starCountNum');
-        if (el) {
-          el.textContent = count >= 1000
-            ? (count / 1000).toFixed(1) + 'k'
-            : count.toLocaleString();
-        }
+        const formatted = count >= 1000
+          ? (count / 1000).toFixed(1) + 'k'
+          : count.toLocaleString();
+        const desktopEl = document.getElementById('starCountNum');
+        const mobileEl = document.getElementById('mobileStarCountNum');
+        if (desktopEl) desktopEl.textContent = formatted;
+        if (mobileEl) mobileEl.textContent = formatted;
       }
     } catch (e) { /* silent */ }
   }

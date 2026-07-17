@@ -49,13 +49,151 @@ body {
   overflow-x: hidden;
 }
 
+/* ─── Navigation Overlay (mobile) ─── */
+.nav-overlay {
+  display: none;
+}
+
+/* ─── Mobile Menu (outside nav) ─── */
+.mobile-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nav-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    inset: 0;
+    z-index: 201;
+    padding: 80px 32px 40px;
+    gap: 6px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-16px) scale(0.97);
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0s 0.35s;
+    pointer-events: none;
+  }
+
+  .mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0s 0s;
+    pointer-events: auto;
+  }
+
+  .mobile-menu a {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    transition: color 0.25s, background 0.25s;
+  }
+
+  .mobile-menu a:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .mobile-menu a.active {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .mobile-menu-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    justify-content: center;
+    transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+    font-family: var(--font-sans);
+    margin-top: 8px;
+  }
+
+  .mobile-menu-github:hover {
+    background: #f0f0f0;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .mobile-menu-github:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-menu-github svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .mobile-menu-star-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    font-family: var(--font-mono);
+  }
+
+  .mobile-menu-star-badge svg {
+    width: 11px;
+    height: 11px;
+  }
+}
+
 /* ─── Navigation (Glassmorphism) ─── */
 nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 250;
   padding: 0 24px;
   height: 64px;
   display: flex;
@@ -66,7 +204,7 @@ nav {
   -webkit-backdrop-filter: saturate(180%) blur(24px) brightness(1.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   transition: background 0.4s, border-color 0.4s, box-shadow 0.4s;
-  overflow: hidden;
+  overflow-x: clip;
 }
 
 nav.scrolled {
@@ -253,6 +391,18 @@ nav.scrolled {
   color: var(--text-primary);
   cursor: pointer;
   padding: 8px;
+  position: relative;
+  z-index: 210;
+  transition: transform 0.3s;
+}
+
+.mobile-menu-btn svg {
+  display: block;
+  transition: transform 0.3s;
+}
+
+.mobile-menu-btn.active svg {
+  transform: rotate(90deg);
 }
 
 /* ─── Container ─── */
@@ -1276,31 +1426,6 @@ footer {
 
   .nav-links {
     display: none;
-  }
-
-  .nav-links.open {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 64px;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.88);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    padding: 24px;
-    gap: 4px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    overflow: hidden;
-  }
-
-  .nav-links.open a {
-    padding: 10px 14px;
-    border-radius: 8px;
-  }
-
-  .nav-links.open a.active {
-    background: rgba(255, 255, 255, 0.08);
   }
 
   .mobile-menu-btn {
