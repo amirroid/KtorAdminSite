@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KtorAdmin — Zero-Boilerplate Admin Panel for Ktor</title>
+  <meta name="description" content="Generate a production-ready admin panel for your Ktor application with a single annotation. Supports Exposed, Hibernate, and MongoDB.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">K</div>
+        KtorAdmin
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#features" data-section="features">Features</a>
+        <a href="#how-it-works" data-section="how-it-works">How It Works</a>
+        <a href="#orms" data-section="orms">ORM Support</a>
+        <a href="#security" data-section="security">Security</a>
+        <a href="https://amirroid.gitbook.io/ktor-admin" target="_blank" rel="noopener">Docs</a>
+        <a href="https://github.com/amirroid/KtorAdmin" class="nav-github" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          <span>Star</span>
+          <span class="github-star-badge" id="starCount">
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/></svg>
+            <span id="starCountNum">...</span>
+          </span>
+        </a>
+      </div>
+      <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Open Source &middot; Kotlin + Ktor
+      </div>
+      <h1 data-progress="reveal-up">Admin panels, automated.</h1>
+      <p class="hero-subtitle" data-progress="reveal-up">
+        Annotate your database entities. KtorAdmin generates a complete, production-ready admin panel with CRUD, search, filtering, file uploads, and dashboards — at compile time.
+      </p>
+      <div class="hero-actions" data-progress="reveal-up">
+        <a href="https://amirroid.gitbook.io/ktor-admin" class="btn-primary" target="_blank" rel="noopener">
+          Get Started
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg>
+        </a>
+        <a href="https://github.com/amirroid/KtorAdmin" class="btn-secondary" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+
+      <div class="code-preview" data-progress="fade-scale">
+        <div class="code-header">
+          <div class="code-dot"></div>
+          <div class="code-dot"></div>
+          <div class="code-dot"></div>
+          <span class="code-filename">Users.kt</span>
+        </div>
+        <div class="code-body">
+          <pre><span class="ann">@ExposedTable</span>(<span class="str">"users"</span>)
+<span class="kw">object</span> <span class="fn">Users</span> : <span class="fn">IntIdTable</span>() {
+    <span class="kw">val</span> name = <span class="fn">varchar</span>(<span class="str">"name"</span>, <span class="num">128</span>)
+    <span class="kw">val</span> email = <span class="fn">varchar</span>(<span class="str">"email"</span>, <span class="num">255</span>).<span class="fn">uniqueIndex</span>()
+    <span class="kw">val</span> role = <span class="fn">enumerationByName</span>(<span class="str">"role"</span>, <span class="num">32</span>)
+    <span class="ann">@S3Upload</span>
+    <span class="kw">val</span> avatar = <span class="fn">varchar</span>(<span class="str">"avatar"</span>, <span class="num">512</span>)
+        .<span class="fn">nullable</span>()
+}
+
+<span class="cm">// That's it. KtorAdmin generates the full admin panel.</span>
+<span class="cm">// Dashboard, CRUD, search, filters, file uploads — all included.</span></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="container">
+      <div class="anim-fade-up">
+        <span class="section-label">Features</span>
+        <h2 class="section-title">Everything you need.<br>Nothing you don't.</h2>
+        <p class="section-desc">
+          A complete admin panel framework that handles the heavy lifting so you can focus on your product.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">&#9889;</div>
+          <h3>Compile-Time Generation</h3>
+          <p>KSP annotation processors generate admin panel metadata at compile time. No runtime reflection overhead on your schema.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#128269;</div>
+          <h3>Auto-Discovery</h3>
+          <p>Annotate your entities and KtorAdmin handles the rest — CRUD views, search, filtering, pagination, and data export.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#128202;</div>
+          <h3>Rich Dashboards</h3>
+          <p>Build data-driven dashboards with Chart.js integration. SUM, AVERAGE, COUNT aggregations and multiple chart types.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#128194;</div>
+          <h3>File Management</h3>
+          <p>Local and AWS S3 storage with thumbnail generation, MIME validation, file previews, and configurable delete strategies.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#128221;</div>
+          <h3>Data Export</h3>
+          <p>Export your data to CSV and styled PDF documents with one click. Customizable headers, formatting, and layouts.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#127760;</div>
+          <h3>i18n Support</h3>
+          <p>Full localization system with English and Persian built-in. RTL layout support and 80+ translation keys out of the box.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="how-it-works">
+    <div class="container">
+      <div class="anim-fade-up" style="text-align: center;">
+        <span class="section-label">How It Works</span>
+        <h2 class="section-title">Three steps to your admin panel</h2>
+        <p class="section-desc" style="margin: 0 auto;">
+          From zero to a fully functional admin interface in minutes, not days.
+        </p>
+      </div>
+
+      <div class="steps">
+        <div class="step anim-fade-up" data-progress="slide-left">
+          <div class="step-number">01</div>
+          <h3>Install the plugin</h3>
+          <p>Add KtorAdmin to your Ktor application with a simple install block. Configure authentication, templates, and storage providers using the DSL.</p>
+        </div>
+        <div class="step anim-fade-up" data-progress="reveal-up">
+          <div class="step-number">02</div>
+          <h3>Annotate your entities</h3>
+          <p>Add a single annotation to your Exposed tables, Hibernate entities, or MongoDB collections. Use 30+ annotations for fine-grained control over display, validation, and relationships.</p>
+        </div>
+        <div class="step anim-fade-up" data-progress="slide-right">
+          <div class="step-number">03</div>
+          <h3>Launch your admin</h3>
+          <p>Run your application and access your admin panel at <code>/admin</code>. Complete CRUD, dashboards, data export, and audit logging ready to use.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Multi-ORM Support -->
+  <section id="orms">
+    <div class="container">
+      <div class="anim-fade-up" style="text-align: center;">
+        <span class="section-label">Multi-ORM Support</span>
+        <h2 class="section-title">One panel. Every database.</h2>
+        <p class="section-desc" style="margin: 0 auto;">
+          The only Ktor admin panel that simultaneously supports SQL and NoSQL databases in a unified interface.
+        </p>
+      </div>
+
+      <div class="orm-grid">
+        <div class="orm-card">
+          <div class="orm-logo">Exposed</div>
+          <h3>JetBrains Exposed</h3>
+          <p>Type-safe SQL with Kotlin DSL. Full support for tables, relations, and custom column types.</p>
+        </div>
+        <div class="orm-card">
+          <div class="orm-logo">Hibernate</div>
+          <h3>Hibernate ORM</h3>
+          <p>JPA entities with annotations. Works with <code>@Entity</code>, <code>@ManyToOne</code>, <code>@ManyToMany</code> and all JPA relationships.</p>
+        </div>
+        <div class="orm-card">
+          <div class="orm-logo">Mongo</div>
+          <h3>MongoDB</h3>
+          <p>Document-based NoSQL with the official Kotlin coroutine driver. Schema-flexible collections with full admin support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dashboard Preview -->
+  <section class="dashboard-section">
+    <div class="container">
+      <div class="anim-fade-up">
+        <span class="section-label">Dashboard</span>
+        <h2 class="section-title">Beautiful dashboards, built in</h2>
+        <p class="section-desc" style="margin: 0 auto;">
+          Grid-based dashboard system with aggregation functions, Chart.js charts, and responsive layouts.
+        </p>
+      </div>
+
+      <div class="dashboard-preview anim-fade-up">
+        <div class="dashboard-chrome">
+          <div class="dashboard-chrome-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="dashboard-chrome-url">localhost:8080/admin/dashboard</div>
+        </div>
+        <div class="dashboard-body">
+          <div class="stat-card" data-progress="reveal-up">
+            <div class="stat-card-label">Total Users</div>
+            <div class="stat-card-value">2,847</div>
+            <div class="stat-card-change">+12.5% this month</div>
+          </div>
+          <div class="stat-card" data-progress="reveal-up">
+            <div class="stat-card-label">Revenue</div>
+            <div class="stat-card-value">$48.2K</div>
+            <div class="stat-card-change">+8.1% this month</div>
+          </div>
+          <div class="stat-card" data-progress="reveal-up">
+            <div class="stat-card-label">Active Tasks</div>
+            <div class="stat-card-value">342</div>
+            <div class="stat-card-change negative">-3.2% this month</div>
+          </div>
+          <div class="stat-card" data-progress="reveal-up">
+            <div class="stat-card-label">Uptime</div>
+            <div class="stat-card-value">99.9%</div>
+            <div class="stat-card-change">+0.1% this month</div>
+          </div>
+        </div>
+        <div class="dashboard-charts">
+          <div class="chart-card">
+            <div class="chart-card-title">Monthly Overview</div>
+            <div class="chart-bars" id="chartBars">
+              <div class="chart-bar" style="height: 45%"></div>
+              <div class="chart-bar" style="height: 62%"></div>
+              <div class="chart-bar" style="height: 38%"></div>
+              <div class="chart-bar" style="height: 78%"></div>
+              <div class="chart-bar" style="height: 55%"></div>
+              <div class="chart-bar" style="height: 85%"></div>
+              <div class="chart-bar" style="height: 70%"></div>
+              <div class="chart-bar" style="height: 92%"></div>
+              <div class="chart-bar" style="height: 65%"></div>
+              <div class="chart-bar" style="height: 80%"></div>
+              <div class="chart-bar" style="height: 72%"></div>
+              <div class="chart-bar" style="height: 95%"></div>
+            </div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-card-title">Distribution</div>
+            <div class="chart-pie"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security -->
+  <section id="security">
+    <div class="container">
+      <div class="anim-fade-up">
+        <span class="section-label">Security</span>
+        <h2 class="section-title">Production-grade, out of the box</h2>
+        <p class="section-desc">
+          Built with security best practices from day one. Not an afterthought.
+        </p>
+      </div>
+
+      <div class="security-grid">
+        <div class="security-card">
+          <span class="security-icon">&#128274;</span>
+          <h3>CSRF Protection</h3>
+          <p>Automatic CSRF token generation and validation with configurable token expiration for all form submissions.</p>
+        </div>
+        <div class="security-card">
+          <span class="security-icon">&#128737;</span>
+          <h3>Encrypted Sessions</h3>
+          <p>AES-encrypted session tokens via <code>CryptoManager</code>. Configurable session age and secure cookie handling.</p>
+        </div>
+        <div class="security-card">
+          <span class="security-icon">&#9201;</span>
+          <h3>Rate Limiting</h3>
+          <p>Per-user rate limiting with configurable requests/minute. Protects against brute force and abuse.</p>
+        </div>
+        <div class="security-card">
+          <span class="security-icon">&#128101;</span>
+          <h3>Role-Based Access</h3>
+          <p>Fine-grained RBAC with <code>@AccessRoles</code> annotations. Control who can view, create, edit, and delete each entity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Extensibility -->
+  <section>
+    <div class="container">
+      <div class="anim-fade-up" style="text-align: center;">
+        <span class="section-label">Extensibility</span>
+        <h2 class="section-title">Built to be extended</h2>
+        <p class="section-desc" style="margin: 0 auto;">
+          Every aspect of KtorAdmin is pluggable. Customize it to fit your exact needs.
+        </p>
+      </div>
+
+      <div class="ext-grid">
+        <div class="ext-card">
+          <h3>Custom Templates</h3>
+          <p>Ships with a Fluent UI theme and a default template. Build your own with the <code>AdminTemplate</code> interface using Velocity or any rendering engine.</p>
+        </div>
+        <div class="ext-card">
+          <h3>Event System</h3>
+          <p>Hook into INSERT, UPDATE, and DELETE events with <code>AdminEventListener</code>. Build audit logs, notifications, or custom side effects.</p>
+        </div>
+        <div class="ext-card">
+          <h3>Custom Actions</h3>
+          <p>Define bulk actions that operate on selected rows. Run custom business logic on multiple records at once.</p>
+        </div>
+        <div class="ext-card">
+          <h3>Custom Pages</h3>
+          <p>Register standalone admin pages via DSL or class-based routes. Extend your admin beyond CRUD with custom views.</p>
+        </div>
+        <div class="ext-card">
+          <h3>Value Mappers</h3>
+          <p>Transform data before display and save. Map database values to human-readable labels or computed representations.</p>
+        </div>
+        <div class="ext-card">
+          <h3>Storage Providers</h3>
+          <p>Abstract file storage behind the <code>StorageProvider</code> interface. Ships with local and S3; bring your own.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="tech-section">
+    <div class="container">
+      <div class="anim-fade-up">
+        <span class="section-label">Tech Stack</span>
+        <h2 class="section-title">Built on modern foundations</h2>
+      </div>
+
+      <div class="tech-pills anim-fade-up">
+        <span class="tech-pill">Kotlin</span>
+        <span class="tech-pill">Ktor 3</span>
+        <span class="tech-pill">KSP</span>
+        <span class="tech-pill">KotlinPoet</span>
+        <span class="tech-pill">Exposed</span>
+        <span class="tech-pill">Hibernate</span>
+        <span class="tech-pill">MongoDB</span>
+        <span class="tech-pill">HikariCP</span>
+        <span class="tech-pill">Velocity</span>
+        <span class="tech-pill">Chart.js</span>
+        <span class="tech-pill">AWS S3</span>
+        <span class="tech-pill">iText PDF</span>
+        <span class="tech-pill">PostgreSQL</span>
+        <span class="tech-pill">H2 Database</span>
+        <span class="tech-pill">kotlinx.serialization</span>
+        <span class="tech-pill">Gradle</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box anim-fade-up">
+        <div class="cta-field" aria-hidden="true">
+          <i class="cta-line cta-line-1"></i>
+          <i class="cta-line cta-line-2"></i>
+          <i class="cta-line cta-line-3"></i>
+          <i class="cta-line cta-line-4"></i>
+          <i class="cta-line cta-line-5"></i>
+          <span class="cta-dot cta-dot-1"></span>
+          <span class="cta-dot cta-dot-2"></span>
+          <span class="cta-dot cta-dot-3"></span>
+          <span class="cta-dot cta-dot-4"></span>
+          <span class="cta-dot cta-dot-5"></span>
+        </div>
+        <h2>Ready to automate<br>your admin panel?</h2>
+        <p>Join the Kotlin/Ktor ecosystem. Open source, production-ready, and free to use.</p>
+        <div class="cta-actions">
+          <a href="https://amirroid.gitbook.io/ktor-admin" class="btn-primary" target="_blank" rel="noopener">
+            Get Started
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg>
+          </a>
+          <a href="https://github.com/amirroid/KtorAdmin" class="btn-secondary" target="_blank" rel="noopener">
+            View Source
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <a href="#" class="nav-logo">
+            <div class="nav-logo-icon">K</div>
+            KtorAdmin
+          </a>
+          <span class="footer-copyright">&copy; 2025 KtorAdmin. Open source under MIT.</span>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/amirroid/KtorAdmin" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://amirroid.gitbook.io/ktor-admin" target="_blank" rel="noopener">Documentation</a>
+          <a href="https://github.com/amirroid/KtorAdmin/issues" target="_blank" rel="noopener">Issues</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
