@@ -170,6 +170,12 @@
   }
   fetchStars();
 
+  // ─── Initialize SVG particle paths ───
+  document.querySelectorAll('.cta-particle[data-path]').forEach(particle => {
+    const d = particle.getAttribute('data-path');
+    particle.style.offsetPath = `path('${d}')`;
+  });
+
   // ─── Smooth anchor offset for fixed nav ───
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {

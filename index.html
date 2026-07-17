@@ -374,16 +374,124 @@
     <div class="container">
       <div class="cta-box anim-fade-up">
         <div class="cta-field" aria-hidden="true">
-          <i class="cta-line cta-line-1"></i>
-          <i class="cta-line cta-line-2"></i>
-          <i class="cta-line cta-line-3"></i>
-          <i class="cta-line cta-line-4"></i>
-          <i class="cta-line cta-line-5"></i>
-          <span class="cta-dot cta-dot-1"></span>
-          <span class="cta-dot cta-dot-2"></span>
-          <span class="cta-dot cta-dot-3"></span>
-          <span class="cta-dot cta-dot-4"></span>
-          <span class="cta-dot cta-dot-5"></span>
+          <svg viewBox="0 0 1000 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <!-- Gradients for each line -->
+              <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%"   stop-color="rgba(0,112,243,0)" />
+                <stop offset="5%"   stop-color="rgba(0,112,243,0)" />
+                <stop offset="12%"  stop-color="#0070f3" />
+                <stop offset="30%"  stop-color="#6366f1" />
+                <stop offset="50%"  stop-color="#8b5cf6" />
+                <stop offset="70%"  stop-color="#a855f7" />
+                <stop offset="85%"  stop-color="#ec4899" />
+                <stop offset="95%"  stop-color="rgba(236,72,153,0)" />
+                <stop offset="100%" stop-color="rgba(236,72,153,0)" />
+              </linearGradient>
+              <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%"   stop-color="rgba(99,102,241,0)" />
+                <stop offset="5%"   stop-color="rgba(99,102,241,0)" />
+                <stop offset="12%"  stop-color="#6366f1" />
+                <stop offset="30%"  stop-color="#8b5cf6" />
+                <stop offset="50%"  stop-color="#a855f7" />
+                <stop offset="70%"  stop-color="#c084fc" />
+                <stop offset="85%"  stop-color="#ec4899" />
+                <stop offset="95%"  stop-color="rgba(244,63,94,0)" />
+                <stop offset="100%" stop-color="rgba(244,63,94,0)" />
+              </linearGradient>
+              <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%"   stop-color="rgba(139,92,246,0)" />
+                <stop offset="5%"   stop-color="rgba(139,92,246,0)" />
+                <stop offset="12%"  stop-color="#8b5cf6" />
+                <stop offset="30%"  stop-color="#a855f7" />
+                <stop offset="50%"  stop-color="#ec4899" />
+                <stop offset="70%"  stop-color="#f43f5e" />
+                <stop offset="85%"  stop-color="#00d4aa" />
+                <stop offset="95%"  stop-color="rgba(0,212,170,0)" />
+                <stop offset="100%" stop-color="rgba(0,212,170,0)" />
+              </linearGradient>
+              <linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%"   stop-color="rgba(236,72,153,0)" />
+                <stop offset="5%"   stop-color="rgba(236,72,153,0)" />
+                <stop offset="12%"  stop-color="#ec4899" />
+                <stop offset="30%"  stop-color="#f43f5e" />
+                <stop offset="50%"  stop-color="#00d4aa" />
+                <stop offset="70%"  stop-color="#0070f3" />
+                <stop offset="85%"  stop-color="#6366f1" />
+                <stop offset="95%"  stop-color="rgba(99,102,241,0)" />
+                <stop offset="100%" stop-color="rgba(99,102,241,0)" />
+              </linearGradient>
+              <linearGradient id="g5" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%"   stop-color="rgba(244,63,94,0)" />
+                <stop offset="5%"   stop-color="rgba(244,63,94,0)" />
+                <stop offset="12%"  stop-color="#f43f5e" />
+                <stop offset="30%"  stop-color="#00d4aa" />
+                <stop offset="50%"  stop-color="#0070f3" />
+                <stop offset="70%"  stop-color="#6366f1" />
+                <stop offset="85%"  stop-color="#8b5cf6" />
+                <stop offset="95%"  stop-color="rgba(139,92,246,0)" />
+                <stop offset="100%" stop-color="rgba(139,92,246,0)" />
+              </linearGradient>
+
+              <!-- Wide bloom filter: heavy atmospheric blur -->
+              <filter id="glow-bloom" x="-60%" y="-800%" width="220%" height="1700%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="65" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <!-- Mid bloom filter -->
+              <filter id="glow-mid" x="-40%" y="-500%" width="180%" height="1100%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="28" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <!-- Core filter: gentle bloom on the sharp line -->
+              <filter id="glow-core" x="-15%" y="-200%" width="130%" height="500%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            <!-- PCB-trace curved paths: converge on left, fan out symmetrically on right -->
+            <!-- Line 1 — steepest upward curve -->
+            <path d="M 80,200 Q 260,195 480,185 Q 700,170 930,108" stroke="url(#g1)" stroke-width="70" fill="none" opacity="0.03" filter="url(#glow-bloom)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,195 480,185 Q 700,170 930,108" stroke="url(#g1)" stroke-width="20" fill="none" opacity="0.06" filter="url(#glow-mid)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,195 480,185 Q 700,170 930,108" stroke="url(#g1)" stroke-width="1.5" fill="none" opacity="0.7" filter="url(#glow-core)" stroke-linecap="round" />
+
+            <!-- Line 2 — moderate upward curve -->
+            <path d="M 80,200 Q 260,197 480,192 Q 700,182 930,152" stroke="url(#g2)" stroke-width="70" fill="none" opacity="0.03" filter="url(#glow-bloom)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,197 480,192 Q 700,182 930,152" stroke="url(#g2)" stroke-width="20" fill="none" opacity="0.06" filter="url(#glow-mid)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,197 480,192 Q 700,182 930,152" stroke="url(#g2)" stroke-width="1.5" fill="none" opacity="0.7" filter="url(#glow-core)" stroke-linecap="round" />
+
+            <!-- Line 3 — center, nearly straight with subtle arc -->
+            <path d="M 80,200 Q 260,199 480,198 Q 700,196 930,200" stroke="url(#g3)" stroke-width="80" fill="none" opacity="0.035" filter="url(#glow-bloom)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,199 480,198 Q 700,196 930,200" stroke="url(#g3)" stroke-width="22" fill="none" opacity="0.07" filter="url(#glow-mid)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,199 480,198 Q 700,196 930,200" stroke="url(#g3)" stroke-width="1.8" fill="none" opacity="0.8" filter="url(#glow-core)" stroke-linecap="round" />
+
+            <!-- Line 4 — moderate downward curve (mirror of line 2) -->
+            <path d="M 80,200 Q 260,203 480,208 Q 700,218 930,248" stroke="url(#g4)" stroke-width="70" fill="none" opacity="0.03" filter="url(#glow-bloom)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,203 480,208 Q 700,218 930,248" stroke="url(#g4)" stroke-width="20" fill="none" opacity="0.06" filter="url(#glow-mid)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,203 480,208 Q 700,218 930,248" stroke="url(#g4)" stroke-width="1.5" fill="none" opacity="0.7" filter="url(#glow-core)" stroke-linecap="round" />
+
+            <!-- Line 5 — steepest downward curve (mirror of line 1) -->
+            <path d="M 80,200 Q 260,205 480,215 Q 700,230 930,292" stroke="url(#g5)" stroke-width="70" fill="none" opacity="0.03" filter="url(#glow-bloom)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,205 480,215 Q 700,230 930,292" stroke="url(#g5)" stroke-width="20" fill="none" opacity="0.06" filter="url(#glow-mid)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,205 480,215 Q 700,230 930,292" stroke="url(#g5)" stroke-width="1.5" fill="none" opacity="0.7" filter="url(#glow-core)" stroke-linecap="round" />
+
+            <!-- Flowing particles along each path -->
+            <circle class="cta-particle" r="2.5" fill="#60a5fa" filter="url(#glow-mid)" data-path="M 80,200 Q 260,195 480,185 Q 700,170 930,108" style="--delay: 0s; --dur: 3.2s;" />
+            <circle class="cta-particle" r="2.5" fill="#a78bfa" filter="url(#glow-mid)" data-path="M 80,200 Q 260,197 480,192 Q 700,182 930,152" style="--delay: -0.65s; --dur: 3.4s;" />
+            <circle class="cta-particle" r="3" fill="#e879f9" filter="url(#glow-mid)" data-path="M 80,200 Q 260,199 480,198 Q 700,196 930,200" style="--delay: -1.3s; --dur: 3.5s;" />
+            <circle class="cta-particle" r="2.5" fill="#f472b6" filter="url(#glow-mid)" data-path="M 80,200 Q 260,203 480,208 Q 700,218 930,248" style="--delay: -2.0s; --dur: 3.4s;" />
+            <circle class="cta-particle" r="2.5" fill="#34d399" filter="url(#glow-mid)" data-path="M 80,200 Q 260,205 480,215 Q 700,230 930,292" style="--delay: -2.7s; --dur: 3.2s;" />
+          </svg>
         </div>
         <h2>Ready to automate<br>your admin panel?</h2>
         <p>Join the Kotlin/Ktor ecosystem. Open source, production-ready, and free to use.</p>
