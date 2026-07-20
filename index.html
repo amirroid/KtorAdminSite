@@ -1,24 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>KtorAdmin — Zero-Boilerplate Admin Panel for Ktor</title>
-  <meta name="description" content="Generate a production-ready admin panel for your Ktor application with a single annotation. Supports Exposed, Hibernate, and MongoDB.">
-  <meta property="og:title" content="KtorAdmin — Zero-Boilerplate Admin Panel for Ktor">
-  <meta property="og:description" content="Generate a production-ready admin panel for your Ktor application with a single annotation. Supports Exposed, Hibernate, and MongoDB.">
-  <meta property="og:image" content="https://ktoradmin.top/banner.jpg">
+
+  <meta name="description"
+    content="Generate a production-ready admin panel for your Ktor application with a single annotation. Supports Exposed, Hibernate, and MongoDB.">
+
+  <meta name="keywords"
+    content="Ktor, Kotlin, Admin Panel, Ktor Admin, Dashboard, Exposed, Hibernate, MongoDB, Kotlin Library, JVM">
+
+  <meta name="author" content="Amirreza Gholami">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0F172A">
+
+  <link rel="canonical" href="https://ktoradmin.top/">
+
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="KtorAdmin">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ktoradmin.top/">
+
+  <meta property="og:title" content="KtorAdmin — Zero-Boilerplate Admin Panel for Ktor">
+
+  <meta property="og:description"
+    content="Generate a production-ready admin panel for your Ktor application with a single annotation. Supports Exposed, Hibernate, and MongoDB.">
+
+  <meta property="og:image" content="https://ktoradmin.top/banner.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="KtorAdmin Dashboard">
+
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="KtorAdmin — Zero-Boilerplate Admin Panel for Ktor">
-  <meta name="twitter:description" content="Generate a production-ready admin panel for your Ktor application with a single annotation. Supports Exposed, Hibernate, and MongoDB.">
+
+  <meta name="twitter:description"
+    content="Generate a production-ready admin panel for your Ktor application with a single annotation.">
+
   <meta name="twitter:image" content="https://ktoradmin.top/banner.jpg">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="favicon.png">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"SoftwareApplication",
+      "name":"KtorAdmin",
+      "url":"https://ktoradmin.top",
+      "applicationCategory":"DeveloperApplication",
+      "operatingSystem":"Cross-platform",
+      "programmingLanguage":"Kotlin",
+      "description":"Zero-boilerplate admin panel for Ktor with support for Exposed, Hibernate and MongoDB.",
+      "license":"https://opensource.org/licenses/MIT"
+    }
+    </script>
 </head>
+
 <body>
 
   <!-- Navigation -->
@@ -35,16 +87,26 @@
         <a href="#security" data-section="security">Security</a>
         <a href="https://amirroid.gitbook.io/ktor-admin" target="_blank" rel="noopener">Docs</a>
         <a href="https://github.com/amirroid/KtorAdmin" class="nav-github" target="_blank" rel="noopener">
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          <svg viewBox="0 0 16 16" fill="currentColor">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+          </svg>
           <span>Star</span>
           <span class="github-star-badge" id="starCount">
-            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/></svg>
+            <svg viewBox="0 0 16 16" fill="currentColor">
+              <path
+                d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z" />
+            </svg>
             <span id="starCountNum">...</span>
           </span>
         </a>
       </div>
       <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
       </button>
     </div>
   </nav>
@@ -58,9 +120,15 @@
     <a href="#security" data-section="security">Security</a>
     <a href="https://amirroid.gitbook.io/ktor-admin" target="_blank" rel="noopener">Docs</a>
     <a href="https://github.com/amirroid/KtorAdmin" class="mobile-menu-github" target="_blank" rel="noopener">
-      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      <svg viewBox="0 0 16 16" fill="currentColor">
+        <path
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+      </svg>
       <span class="mobile-menu-star-badge" id="mobileStarCount">
-        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/></svg>
+        <svg viewBox="0 0 16 16" fill="currentColor">
+          <path
+            d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z" />
+        </svg>
         <span id="mobileStarCountNum">...</span>
       </span>
     </a>
@@ -75,15 +143,22 @@
       </div>
       <h1 data-progress="reveal-up">Admin panels, automated.</h1>
       <p class="hero-subtitle" data-progress="reveal-up">
-        Annotate your database entities. KtorAdmin generates a complete, production-ready admin panel with CRUD, search, filtering, file uploads, and dashboards — at compile time.
+        Annotate your database entities. KtorAdmin generates a complete, production-ready admin panel with CRUD, search,
+        filtering, file uploads, and dashboards — at compile time.
       </p>
       <div class="hero-actions" data-progress="reveal-up">
         <a href="https://amirroid.gitbook.io/ktor-admin" class="btn-primary" target="_blank" rel="noopener">
           Get Started
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="8" x2="13" y2="8" />
+            <polyline points="9,4 13,8 9,12" />
+          </svg>
         </a>
         <a href="https://github.com/amirroid/KtorAdmin" class="btn-secondary" target="_blank" rel="noopener">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+          </svg>
           View on GitHub
         </a>
       </div>
@@ -128,32 +203,38 @@
         <div class="feature-card">
           <div class="feature-icon">&#9889;</div>
           <h3>Compile-Time Generation</h3>
-          <p>KSP annotation processors generate admin panel metadata at compile time. No runtime reflection overhead on your schema.</p>
+          <p>KSP annotation processors generate admin panel metadata at compile time. No runtime reflection overhead on
+            your schema.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">&#128269;</div>
           <h3>Auto-Discovery</h3>
-          <p>Annotate your entities and KtorAdmin handles the rest — CRUD views, search, filtering, pagination, and data export.</p>
+          <p>Annotate your entities and KtorAdmin handles the rest — CRUD views, search, filtering, pagination, and data
+            export.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">&#128202;</div>
           <h3>Rich Dashboards</h3>
-          <p>Build data-driven dashboards with Chart.js integration. SUM, AVERAGE, COUNT aggregations and multiple chart types.</p>
+          <p>Build data-driven dashboards with Chart.js integration. SUM, AVERAGE, COUNT aggregations and multiple chart
+            types.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">&#128194;</div>
           <h3>File Management</h3>
-          <p>Local and AWS S3 storage with thumbnail generation, MIME validation, file previews, and configurable delete strategies.</p>
+          <p>Local and AWS S3 storage with thumbnail generation, MIME validation, file previews, and configurable delete
+            strategies.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">&#128221;</div>
           <h3>Data Export</h3>
-          <p>Export your data to CSV and styled PDF documents with one click. Customizable headers, formatting, and layouts.</p>
+          <p>Export your data to CSV and styled PDF documents with one click. Customizable headers, formatting, and
+            layouts.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">&#127760;</div>
           <h3>i18n Support</h3>
-          <p>Full localization system with English and Persian built-in. RTL layout support and 80+ translation keys out of the box.</p>
+          <p>Full localization system with English and Persian built-in. RTL layout support and 80+ translation keys out
+            of the box.</p>
         </div>
       </div>
     </div>
@@ -174,17 +255,20 @@
         <div class="step anim-fade-up" data-progress="slide-left">
           <div class="step-number">01</div>
           <h3>Install the plugin</h3>
-          <p>Add KtorAdmin to your Ktor application with a simple install block. Configure authentication, templates, and storage providers using the DSL.</p>
+          <p>Add KtorAdmin to your Ktor application with a simple install block. Configure authentication, templates,
+            and storage providers using the DSL.</p>
         </div>
         <div class="step anim-fade-up" data-progress="reveal-up">
           <div class="step-number">02</div>
           <h3>Annotate your entities</h3>
-          <p>Add a single annotation to your Exposed tables, Hibernate entities, or MongoDB collections. Use 30+ annotations for fine-grained control over display, validation, and relationships.</p>
+          <p>Add a single annotation to your Exposed tables, Hibernate entities, or MongoDB collections. Use 30+
+            annotations for fine-grained control over display, validation, and relationships.</p>
         </div>
         <div class="step anim-fade-up" data-progress="slide-right">
           <div class="step-number">03</div>
           <h3>Launch your admin</h3>
-          <p>Run your application and access your admin panel at <code>/admin</code>. Complete CRUD, dashboards, data export, and audit logging ready to use.</p>
+          <p>Run your application and access your admin panel at <code>/admin</code>. Complete CRUD, dashboards, data
+            export, and audit logging ready to use.</p>
         </div>
       </div>
     </div>
@@ -210,12 +294,14 @@
         <div class="orm-card">
           <div class="orm-logo">Hibernate</div>
           <h3>Hibernate ORM</h3>
-          <p>JPA entities with annotations. Works with <code>@Entity</code>, <code>@ManyToOne</code>, <code>@ManyToMany</code> and all JPA relationships.</p>
+          <p>JPA entities with annotations. Works with <code>@Entity</code>, <code>@ManyToOne</code>,
+            <code>@ManyToMany</code> and all JPA relationships.</p>
         </div>
         <div class="orm-card">
           <div class="orm-logo">Mongo</div>
           <h3>MongoDB</h3>
-          <p>Document-based NoSQL with the official Kotlin coroutine driver. Schema-flexible collections with full admin support.</p>
+          <p>Document-based NoSQL with the official Kotlin coroutine driver. Schema-flexible collections with full admin
+            support.</p>
         </div>
       </div>
     </div>
@@ -305,12 +391,14 @@
         <div class="security-card">
           <span class="security-icon">&#128274;</span>
           <h3>CSRF Protection</h3>
-          <p>Automatic CSRF token generation and validation with configurable token expiration for all form submissions.</p>
+          <p>Automatic CSRF token generation and validation with configurable token expiration for all form submissions.
+          </p>
         </div>
         <div class="security-card">
           <span class="security-icon">&#128737;</span>
           <h3>Encrypted Sessions</h3>
-          <p>AES-encrypted session tokens via <code>CryptoManager</code>. Configurable session age and secure cookie handling.</p>
+          <p>AES-encrypted session tokens via <code>CryptoManager</code>. Configurable session age and secure cookie
+            handling.</p>
         </div>
         <div class="security-card">
           <span class="security-icon">&#9201;</span>
@@ -320,7 +408,8 @@
         <div class="security-card">
           <span class="security-icon">&#128101;</span>
           <h3>Role-Based Access</h3>
-          <p>Fine-grained RBAC with <code>@AccessRoles</code> annotations. Control who can view, create, edit, and delete each entity.</p>
+          <p>Fine-grained RBAC with <code>@AccessRoles</code> annotations. Control who can view, create, edit, and
+            delete each entity.</p>
         </div>
       </div>
     </div>
@@ -340,27 +429,33 @@
       <div class="ext-grid">
         <div class="ext-card">
           <h3>Custom Templates</h3>
-          <p>Ships with a Fluent UI theme and a default template. Build your own with the <code>AdminTemplate</code> interface using Velocity or any rendering engine.</p>
+          <p>Ships with a Fluent UI theme and a default template. Build your own with the <code>AdminTemplate</code>
+            interface using Velocity or any rendering engine.</p>
         </div>
         <div class="ext-card">
           <h3>Event System</h3>
-          <p>Hook into INSERT, UPDATE, and DELETE events with <code>AdminEventListener</code>. Build audit logs, notifications, or custom side effects.</p>
+          <p>Hook into INSERT, UPDATE, and DELETE events with <code>AdminEventListener</code>. Build audit logs,
+            notifications, or custom side effects.</p>
         </div>
         <div class="ext-card">
           <h3>Custom Actions</h3>
-          <p>Define bulk actions that operate on selected rows. Run custom business logic on multiple records at once.</p>
+          <p>Define bulk actions that operate on selected rows. Run custom business logic on multiple records at once.
+          </p>
         </div>
         <div class="ext-card">
           <h3>Custom Pages</h3>
-          <p>Register standalone admin pages via DSL or class-based routes. Extend your admin beyond CRUD with custom views.</p>
+          <p>Register standalone admin pages via DSL or class-based routes. Extend your admin beyond CRUD with custom
+            views.</p>
         </div>
         <div class="ext-card">
           <h3>Value Mappers</h3>
-          <p>Transform data before display and save. Map database values to human-readable labels or computed representations.</p>
+          <p>Transform data before display and save. Map database values to human-readable labels or computed
+            representations.</p>
         </div>
         <div class="ext-card">
           <h3>Storage Providers</h3>
-          <p>Abstract file storage behind the <code>StorageProvider</code> interface. Ships with local and S3; bring your own.</p>
+          <p>Abstract file storage behind the <code>StorageProvider</code> interface. Ships with local and S3; bring
+            your own.</p>
         </div>
       </div>
     </div>
@@ -404,58 +499,58 @@
             <defs>
               <!-- Gradients for each line -->
               <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%"   stop-color="rgba(0,112,243,0)" />
-                <stop offset="5%"   stop-color="rgba(0,112,243,0)" />
-                <stop offset="12%"  stop-color="#0070f3" />
-                <stop offset="30%"  stop-color="#6366f1" />
-                <stop offset="50%"  stop-color="#8b5cf6" />
-                <stop offset="70%"  stop-color="#a855f7" />
-                <stop offset="85%"  stop-color="#ec4899" />
-                <stop offset="95%"  stop-color="rgba(236,72,153,0)" />
+                <stop offset="0%" stop-color="rgba(0,112,243,0)" />
+                <stop offset="5%" stop-color="rgba(0,112,243,0)" />
+                <stop offset="12%" stop-color="#0070f3" />
+                <stop offset="30%" stop-color="#6366f1" />
+                <stop offset="50%" stop-color="#8b5cf6" />
+                <stop offset="70%" stop-color="#a855f7" />
+                <stop offset="85%" stop-color="#ec4899" />
+                <stop offset="95%" stop-color="rgba(236,72,153,0)" />
                 <stop offset="100%" stop-color="rgba(236,72,153,0)" />
               </linearGradient>
               <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%"   stop-color="rgba(99,102,241,0)" />
-                <stop offset="5%"   stop-color="rgba(99,102,241,0)" />
-                <stop offset="12%"  stop-color="#6366f1" />
-                <stop offset="30%"  stop-color="#8b5cf6" />
-                <stop offset="50%"  stop-color="#a855f7" />
-                <stop offset="70%"  stop-color="#c084fc" />
-                <stop offset="85%"  stop-color="#ec4899" />
-                <stop offset="95%"  stop-color="rgba(244,63,94,0)" />
+                <stop offset="0%" stop-color="rgba(99,102,241,0)" />
+                <stop offset="5%" stop-color="rgba(99,102,241,0)" />
+                <stop offset="12%" stop-color="#6366f1" />
+                <stop offset="30%" stop-color="#8b5cf6" />
+                <stop offset="50%" stop-color="#a855f7" />
+                <stop offset="70%" stop-color="#c084fc" />
+                <stop offset="85%" stop-color="#ec4899" />
+                <stop offset="95%" stop-color="rgba(244,63,94,0)" />
                 <stop offset="100%" stop-color="rgba(244,63,94,0)" />
               </linearGradient>
               <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%"   stop-color="rgba(139,92,246,0)" />
-                <stop offset="5%"   stop-color="rgba(139,92,246,0)" />
-                <stop offset="12%"  stop-color="#8b5cf6" />
-                <stop offset="30%"  stop-color="#a855f7" />
-                <stop offset="50%"  stop-color="#ec4899" />
-                <stop offset="70%"  stop-color="#f43f5e" />
-                <stop offset="85%"  stop-color="#00d4aa" />
-                <stop offset="95%"  stop-color="rgba(0,212,170,0)" />
+                <stop offset="0%" stop-color="rgba(139,92,246,0)" />
+                <stop offset="5%" stop-color="rgba(139,92,246,0)" />
+                <stop offset="12%" stop-color="#8b5cf6" />
+                <stop offset="30%" stop-color="#a855f7" />
+                <stop offset="50%" stop-color="#ec4899" />
+                <stop offset="70%" stop-color="#f43f5e" />
+                <stop offset="85%" stop-color="#00d4aa" />
+                <stop offset="95%" stop-color="rgba(0,212,170,0)" />
                 <stop offset="100%" stop-color="rgba(0,212,170,0)" />
               </linearGradient>
               <linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%"   stop-color="rgba(236,72,153,0)" />
-                <stop offset="5%"   stop-color="rgba(236,72,153,0)" />
-                <stop offset="12%"  stop-color="#ec4899" />
-                <stop offset="30%"  stop-color="#f43f5e" />
-                <stop offset="50%"  stop-color="#00d4aa" />
-                <stop offset="70%"  stop-color="#0070f3" />
-                <stop offset="85%"  stop-color="#6366f1" />
-                <stop offset="95%"  stop-color="rgba(99,102,241,0)" />
+                <stop offset="0%" stop-color="rgba(236,72,153,0)" />
+                <stop offset="5%" stop-color="rgba(236,72,153,0)" />
+                <stop offset="12%" stop-color="#ec4899" />
+                <stop offset="30%" stop-color="#f43f5e" />
+                <stop offset="50%" stop-color="#00d4aa" />
+                <stop offset="70%" stop-color="#0070f3" />
+                <stop offset="85%" stop-color="#6366f1" />
+                <stop offset="95%" stop-color="rgba(99,102,241,0)" />
                 <stop offset="100%" stop-color="rgba(99,102,241,0)" />
               </linearGradient>
               <linearGradient id="g5" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%"   stop-color="rgba(244,63,94,0)" />
-                <stop offset="5%"   stop-color="rgba(244,63,94,0)" />
-                <stop offset="12%"  stop-color="#f43f5e" />
-                <stop offset="30%"  stop-color="#00d4aa" />
-                <stop offset="50%"  stop-color="#0070f3" />
-                <stop offset="70%"  stop-color="#6366f1" />
-                <stop offset="85%"  stop-color="#8b5cf6" />
-                <stop offset="95%"  stop-color="rgba(139,92,246,0)" />
+                <stop offset="0%" stop-color="rgba(244,63,94,0)" />
+                <stop offset="5%" stop-color="rgba(244,63,94,0)" />
+                <stop offset="12%" stop-color="#f43f5e" />
+                <stop offset="30%" stop-color="#00d4aa" />
+                <stop offset="50%" stop-color="#0070f3" />
+                <stop offset="70%" stop-color="#6366f1" />
+                <stop offset="85%" stop-color="#8b5cf6" />
+                <stop offset="95%" stop-color="rgba(139,92,246,0)" />
                 <stop offset="100%" stop-color="rgba(139,92,246,0)" />
               </linearGradient>
 
@@ -487,36 +582,56 @@
 
             <!-- PCB-trace curved paths: converge on left, fan out symmetrically on right -->
             <!-- Line 1 — steepest upward curve -->
-            <path d="M 80,200 Q 260,195 480,185 Q 700,170 930,108" stroke="url(#g1)" stroke-width="70" fill="none" opacity="0.03" filter="url(#glow-bloom)" stroke-linecap="round" />
-            <path d="M 80,200 Q 260,195 480,185 Q 700,170 930,108" stroke="url(#g1)" stroke-width="20" fill="none" opacity="0.06" filter="url(#glow-mid)" stroke-linecap="round" />
-            <path d="M 80,200 Q 260,195 480,185 Q 700,170 930,108" stroke="url(#g1)" stroke-width="1.5" fill="none" opacity="0.7" filter="url(#glow-core)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,195 480,185 Q 700,170 930,108" stroke="url(#g1)" stroke-width="70" fill="none"
+              opacity="0.03" filter="url(#glow-bloom)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,195 480,185 Q 700,170 930,108" stroke="url(#g1)" stroke-width="20" fill="none"
+              opacity="0.06" filter="url(#glow-mid)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,195 480,185 Q 700,170 930,108" stroke="url(#g1)" stroke-width="1.5" fill="none"
+              opacity="0.7" filter="url(#glow-core)" stroke-linecap="round" />
 
             <!-- Line 2 — moderate upward curve -->
-            <path d="M 80,200 Q 260,197 480,192 Q 700,182 930,152" stroke="url(#g2)" stroke-width="70" fill="none" opacity="0.03" filter="url(#glow-bloom)" stroke-linecap="round" />
-            <path d="M 80,200 Q 260,197 480,192 Q 700,182 930,152" stroke="url(#g2)" stroke-width="20" fill="none" opacity="0.06" filter="url(#glow-mid)" stroke-linecap="round" />
-            <path d="M 80,200 Q 260,197 480,192 Q 700,182 930,152" stroke="url(#g2)" stroke-width="1.5" fill="none" opacity="0.7" filter="url(#glow-core)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,197 480,192 Q 700,182 930,152" stroke="url(#g2)" stroke-width="70" fill="none"
+              opacity="0.03" filter="url(#glow-bloom)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,197 480,192 Q 700,182 930,152" stroke="url(#g2)" stroke-width="20" fill="none"
+              opacity="0.06" filter="url(#glow-mid)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,197 480,192 Q 700,182 930,152" stroke="url(#g2)" stroke-width="1.5" fill="none"
+              opacity="0.7" filter="url(#glow-core)" stroke-linecap="round" />
 
             <!-- Line 3 — center, nearly straight with subtle arc -->
-            <path d="M 80,200 Q 260,199 480,198 Q 700,196 930,200" stroke="url(#g3)" stroke-width="80" fill="none" opacity="0.035" filter="url(#glow-bloom)" stroke-linecap="round" />
-            <path d="M 80,200 Q 260,199 480,198 Q 700,196 930,200" stroke="url(#g3)" stroke-width="22" fill="none" opacity="0.07" filter="url(#glow-mid)" stroke-linecap="round" />
-            <path d="M 80,200 Q 260,199 480,198 Q 700,196 930,200" stroke="url(#g3)" stroke-width="1.8" fill="none" opacity="0.8" filter="url(#glow-core)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,199 480,198 Q 700,196 930,200" stroke="url(#g3)" stroke-width="80" fill="none"
+              opacity="0.035" filter="url(#glow-bloom)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,199 480,198 Q 700,196 930,200" stroke="url(#g3)" stroke-width="22" fill="none"
+              opacity="0.07" filter="url(#glow-mid)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,199 480,198 Q 700,196 930,200" stroke="url(#g3)" stroke-width="1.8" fill="none"
+              opacity="0.8" filter="url(#glow-core)" stroke-linecap="round" />
 
             <!-- Line 4 — moderate downward curve (mirror of line 2) -->
-            <path d="M 80,200 Q 260,203 480,208 Q 700,218 930,248" stroke="url(#g4)" stroke-width="70" fill="none" opacity="0.03" filter="url(#glow-bloom)" stroke-linecap="round" />
-            <path d="M 80,200 Q 260,203 480,208 Q 700,218 930,248" stroke="url(#g4)" stroke-width="20" fill="none" opacity="0.06" filter="url(#glow-mid)" stroke-linecap="round" />
-            <path d="M 80,200 Q 260,203 480,208 Q 700,218 930,248" stroke="url(#g4)" stroke-width="1.5" fill="none" opacity="0.7" filter="url(#glow-core)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,203 480,208 Q 700,218 930,248" stroke="url(#g4)" stroke-width="70" fill="none"
+              opacity="0.03" filter="url(#glow-bloom)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,203 480,208 Q 700,218 930,248" stroke="url(#g4)" stroke-width="20" fill="none"
+              opacity="0.06" filter="url(#glow-mid)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,203 480,208 Q 700,218 930,248" stroke="url(#g4)" stroke-width="1.5" fill="none"
+              opacity="0.7" filter="url(#glow-core)" stroke-linecap="round" />
 
             <!-- Line 5 — steepest downward curve (mirror of line 1) -->
-            <path d="M 80,200 Q 260,205 480,215 Q 700,230 930,292" stroke="url(#g5)" stroke-width="70" fill="none" opacity="0.03" filter="url(#glow-bloom)" stroke-linecap="round" />
-            <path d="M 80,200 Q 260,205 480,215 Q 700,230 930,292" stroke="url(#g5)" stroke-width="20" fill="none" opacity="0.06" filter="url(#glow-mid)" stroke-linecap="round" />
-            <path d="M 80,200 Q 260,205 480,215 Q 700,230 930,292" stroke="url(#g5)" stroke-width="1.5" fill="none" opacity="0.7" filter="url(#glow-core)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,205 480,215 Q 700,230 930,292" stroke="url(#g5)" stroke-width="70" fill="none"
+              opacity="0.03" filter="url(#glow-bloom)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,205 480,215 Q 700,230 930,292" stroke="url(#g5)" stroke-width="20" fill="none"
+              opacity="0.06" filter="url(#glow-mid)" stroke-linecap="round" />
+            <path d="M 80,200 Q 260,205 480,215 Q 700,230 930,292" stroke="url(#g5)" stroke-width="1.5" fill="none"
+              opacity="0.7" filter="url(#glow-core)" stroke-linecap="round" />
 
             <!-- Flowing particles along each path -->
-            <circle class="cta-particle" r="2.5" fill="#60a5fa" filter="url(#glow-mid)" data-path="M 80,200 Q 260,195 480,185 Q 700,170 930,108" style="--delay: 0s; --dur: 3.2s;" />
-            <circle class="cta-particle" r="2.5" fill="#a78bfa" filter="url(#glow-mid)" data-path="M 80,200 Q 260,197 480,192 Q 700,182 930,152" style="--delay: -0.65s; --dur: 3.4s;" />
-            <circle class="cta-particle" r="3" fill="#e879f9" filter="url(#glow-mid)" data-path="M 80,200 Q 260,199 480,198 Q 700,196 930,200" style="--delay: -1.3s; --dur: 3.5s;" />
-            <circle class="cta-particle" r="2.5" fill="#f472b6" filter="url(#glow-mid)" data-path="M 80,200 Q 260,203 480,208 Q 700,218 930,248" style="--delay: -2.0s; --dur: 3.4s;" />
-            <circle class="cta-particle" r="2.5" fill="#34d399" filter="url(#glow-mid)" data-path="M 80,200 Q 260,205 480,215 Q 700,230 930,292" style="--delay: -2.7s; --dur: 3.2s;" />
+            <circle class="cta-particle" r="2.5" fill="#60a5fa" filter="url(#glow-mid)"
+              data-path="M 80,200 Q 260,195 480,185 Q 700,170 930,108" style="--delay: 0s; --dur: 3.2s;" />
+            <circle class="cta-particle" r="2.5" fill="#a78bfa" filter="url(#glow-mid)"
+              data-path="M 80,200 Q 260,197 480,192 Q 700,182 930,152" style="--delay: -0.65s; --dur: 3.4s;" />
+            <circle class="cta-particle" r="3" fill="#e879f9" filter="url(#glow-mid)"
+              data-path="M 80,200 Q 260,199 480,198 Q 700,196 930,200" style="--delay: -1.3s; --dur: 3.5s;" />
+            <circle class="cta-particle" r="2.5" fill="#f472b6" filter="url(#glow-mid)"
+              data-path="M 80,200 Q 260,203 480,208 Q 700,218 930,248" style="--delay: -2.0s; --dur: 3.4s;" />
+            <circle class="cta-particle" r="2.5" fill="#34d399" filter="url(#glow-mid)"
+              data-path="M 80,200 Q 260,205 480,215 Q 700,230 930,292" style="--delay: -2.7s; --dur: 3.2s;" />
           </svg>
         </div>
         <h2>Ready to automate<br>your admin panel?</h2>
@@ -524,7 +639,10 @@
         <div class="cta-actions">
           <a href="https://amirroid.gitbook.io/ktor-admin" class="btn-primary" target="_blank" rel="noopener">
             Get Started
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="8" x2="13" y2="8" />
+              <polyline points="9,4 13,8 9,12" />
+            </svg>
           </a>
           <a href="https://github.com/amirroid/KtorAdmin" class="btn-secondary" target="_blank" rel="noopener">
             View Source
@@ -556,4 +674,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
